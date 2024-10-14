@@ -98,3 +98,44 @@ window.addEventListener("load", () => {
 });
 
 //
+
+document.querySelectorAll(".hs-accordion-toggle").forEach((button) => {
+  button.addEventListener("click", () => {
+    // Toggle the active class on the button
+    button.classList.toggle("active");
+
+    // Get the associated content div
+    const accordionContent = button.nextElementSibling;
+
+    // Toggle visibility
+    if (accordionContent.classList.contains("hidden")) {
+      accordionContent.classList.remove("hidden");
+      accordionContent.style.maxHeight = accordionContent.scrollHeight + "px"; // Set max height to scroll height
+    } else {
+      accordionContent.classList.add("hidden");
+      accordionContent.style.maxHeight = null; // Reset max height
+    }
+  });
+});
+
+//
+
+function changeLanguage(lang) {
+  document
+    .querySelectorAll("[data-" + lang + "]")
+    .forEach((el) => (el.innerText = el.getAttribute("data-" + lang)));
+
+  // تغيير اتجاه النص بناءً على اللغة
+  document.body.setAttribute("dir", lang === "ar" ? "rtl" : "ltr");
+
+  localStorage.setItem("language", lang);
+}
+
+window.onload = () => changeLanguage(localStorage.getItem("language") || "en");
+
+//
+
+function toggleNavbar() {
+  const navbar = document.getElementById("navbar-collapse-with-animation");
+  navbar.classList.toggle("hidden");
+}

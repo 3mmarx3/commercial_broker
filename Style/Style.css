@@ -4230,3 +4230,13 @@ li {
 .top-12.overflow-hidden {
   border-radius: 10px;
 }
+
+body {
+  font-family: "Cairo", sans-serif;
+}
+
+span.logo_text {
+  font-size: x-large;
+  --tw-text-opacity: 1;
+  color: rgb(229 229 229 / var(--tw-text-opacity));
+}
